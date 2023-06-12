@@ -14,7 +14,7 @@ class Tic {
 			}
 		}
 	}
-	public void playGame(Scanner tic) {
+	public void playGame(Scanner tic) throws InterruptedException {
 		System.out.println(this.toString());
 		int i = 1;
 		while (i < 10 && !checkWin()) {
@@ -36,7 +36,7 @@ class Tic {
 		}
 		returnToHome(tic);
 	}
-	public void promptPlayer(Scanner tic, int count) {
+	public void promptPlayer(Scanner tic, int count) throws InterruptedException {
 		int player = 0;
 		char shape = ' ';
 		if (count % 2 == 0) {
@@ -126,14 +126,14 @@ class Tic {
 			}
 		}
 	}
-	public void returnToHome(Scanner game) {
+	public void returnToHome(Scanner game) throws InterruptedException {
 		boolean moron = true;
 		do {
-			Animation ending = new Animation("Type 1 to play Connect 4, Type 2 to play Tic Tac Toe, and type 0 to end");
+			Animation ending = new Animation("Type 1 to play Connect 4, Type 2 to play Tic Tac Toe,Type 3 to play Rock Paper Scissors, and type 0 to end");
 			ending.slowType();
 			int input = game.nextInt();
-			if (input > 2) {
-				Animation wrong = new Animation("Invalid number dumbo. That's not 1,2, or 0.");
+			if (input > 3) {
+				Animation wrong = new Animation("Invalid number dumbo. That's not 1,2,3, or 0.");
 				wrong.slowType();
 			} else {
 				moron = false;
@@ -144,6 +144,10 @@ class Tic {
 				} else if (input == 2) {
 					reset();
 					playGame(game);
+				} else if (input == 3) {
+					Animation welcome = new Animation("Welcome to Rock Paper Scissors. If you want to go to home type 0 at anytime.");
+					welcome.slowType();
+					RPS game3 = new RPS();
 				} else if (input == 0) {
 					Animation goodByeSequence = new Animation("GOODBYE WE WILL MISS YOU");
 					goodByeSequence.loadingScreen();
