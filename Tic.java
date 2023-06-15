@@ -132,8 +132,8 @@ class Tic {
 			Animation ending = new Animation("Type 1 to play Connect 4, Type 2 to play Tic Tac Toe,Type 3 to play Rock Paper Scissors, and type 0 to end");
 			ending.slowType();
 			int input = game.nextInt();
-			if (input > 3) {
-				Animation wrong = new Animation("Invalid number dumbo. That's not 1,2,3, or 0.");
+			if (input > 4 || input < 0) {
+				Animation wrong = new Animation("Invalid number dumbo. That's not 1,2,3,4, or 0.");
 				wrong.slowType();
 			} else {
 				moron = false;
@@ -147,7 +147,9 @@ class Tic {
 				} else if (input == 3) {
 					Animation welcome = new Animation("Welcome to Rock Paper Scissors. If you want to go to home type 0 at anytime.");
 					welcome.slowType();
-					RPS game3 = new RPS();
+					new RPS();
+				} else if(input == 4){
+					new Memory();
 				} else if (input == 0) {
 					Animation goodByeSequence = new Animation("GOODBYE WE WILL MISS YOU");
 					goodByeSequence.loadingScreen();

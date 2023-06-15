@@ -21,7 +21,7 @@ class Animation {
 					System.out.println();
 				}
 				try {
-					Thread.sleep(25);
+					Thread.sleep(20);
 				} catch (InterruptedException ex) {
 					Thread.currentThread().interrupt();
 				}

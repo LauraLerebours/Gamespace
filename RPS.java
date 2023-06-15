@@ -26,8 +26,9 @@ public class RPS {
         while (round <= games){
             System.out.println("Round " + round + ":");
             System.out.println("Enter your choice: ");
-            Scanner input = new Scanner(System.in);
-            player = input.nextInt();
+            try (Scanner input = new Scanner(System.in)) {
+                player = input.nextInt();
+            }
             computer = (int)(Math.random() * 3) + 1;
             if (!isValidEntry(player)){
                 new Animation("Invalid entry. Please enter a number between 1 and 3.").slowType();
@@ -86,7 +87,7 @@ public class RPS {
 			Animation ending = new Animation("Type 1 to play Connect 4, Type 2 to play Tic Tac Toe,Type 3 to play Rock Paper Scissors, and type 0 to end");
 			ending.slowType();
 			int input = game.nextInt();
-			if (input > 3) {
+			if (input > 4 || input < 0) {
 				Animation wrong = new Animation("Invalid number dumbo. That's not 1,2, or 0.");
 				wrong.slowType();
 			} else {
@@ -99,9 +100,11 @@ public class RPS {
 					game2.playGame(game);
                 } else if (input == 3) {
                     Animation welcome = new Animation("Welcome to Rock Paper Scissors. If you want to go to home type 0 at anytime.");
-					welcome.slowType();
-					RPS game3 = new RPS();
-				} else if (input == 0) {
+					welcome.slowType();		
+                    new RPS();
+				} else if(input == 4){
+                    new Memory();
+                } else if (input == 0) {
 					Animation goodByeSequence = new Animation("GOODBYE WE WILL MISS YOU");
 					goodByeSequence.loadingScreen();
 					System.out.println(":)");

@@ -12,11 +12,11 @@ class Main {
 		test.loadingScreen();
 		boolean error = true;
 		do {
-			Animation question = new Animation("Welcome to the arena. Type 1 for tic tac toe, 2 for connect 4, and 3 for rock paper scissors.");
+			Animation question = new Animation("Welcome to the arena. Type 1 for tic tac toe, 2 for connect 4, 3 for rock paper scissors, and 4 for the memory game.");
 			question.slowType();
 			int choice = play.nextInt();
-			if (choice != 1 && choice != 2 && choice != 3) {
-				Animation wrong = new Animation("Invalid Number dumbo. Thats not 1 or 2.");
+			if (choice > 4 || choice < 1) {
+				Animation wrong = new Animation("Invalid Number dumbo. Thats not 1, 2, 3, or 4.");
 				wrong.slowType();
 			} else {
 				error = false;
@@ -49,6 +49,8 @@ class Main {
 						Thread.currentThread().interrupt();
 					}
 					RPS game = new RPS();
+				} else if(choice == 4){
+					new Memory();
 				}
 			}
 		} while (error);
